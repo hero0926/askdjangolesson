@@ -17,8 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
 
+from django.conf import settings
+import debug_toolbar
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
-    path("dojo/", include('dojo.urls'))
+    path("dojo/", include('dojo.urls')),
+    path("accounts/", include("accounts.urls"))
 ]
+
+
+if settings.DEBUG :
+    urlpatterns += [
+    url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]

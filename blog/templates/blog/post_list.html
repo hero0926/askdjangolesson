@@ -1,1 +1,26 @@
-<h1>뀨?</h1>
+{% extends "blog/layout.html" %}
+
+{% block content %}
+<p>test message</p>
+
+<form action="" method="get">
+<input type="text" name="q" value ={{q}}>
+<input type="submit" value="검색">
+</form>
+
+<ul>
+{% for post in post_list %}
+
+<li>
+{{post.id}}
+
+<a href="{%url "post_detail" post.id%}">{{post.title}}</a>
+<small>{{post.author}}</small>
+<small>{{post.created_at}}</small>
+</li>
+{%endfor%}
+</ul>
+
+<hr>
+
+{%endblock%}
